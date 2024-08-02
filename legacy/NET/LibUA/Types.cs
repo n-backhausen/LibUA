@@ -5277,7 +5277,6 @@ namespace LibUA
         [Flags]
         public enum AccessLevel
         {
-            None = 0x0,
             CurrentRead = 0x1,
             CurrentWrite = 0x2,
             HistoryRead = 0x4,
