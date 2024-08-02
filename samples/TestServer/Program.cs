@@ -105,7 +105,7 @@ namespace TestServer
             {
             }
 
-            public override bool SessionValidateClientUser(object session, object userIdentityToken)
+            public override bool SessionValidateClientUser(object session, UserIdentityToken userIdentityToken)
             {
                 if (userIdentityToken is UserIdentityAnonymousToken)
                 {
@@ -327,7 +327,7 @@ namespace TestServer
                 return (UInt32)StatusCode.BadHistoryOperationUnsupported;
             }
 
-            public override UInt32 HandleHistoryEventReadRequest(object session, object readDetails,
+            public override UInt32 HandleHistoryEventReadRequest(object session, ReadEventDetails readDetails,
                 HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<object[]> results)
             {
                 if (readDetails is ReadEventDetails)
