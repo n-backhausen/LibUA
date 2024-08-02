@@ -2081,10 +2081,10 @@ namespace LibUA
                             continuationHistory.Add(contIndex, cont);
                         }
 
-                        if (readDetails is ReadEventDetails)
+                        if (readDetails is ReadEventDetails readEventDetails)
                         {
                             resultsEvents.Clear();
-                            var statusCode = app.HandleHistoryEventReadRequest(config.Session, readDetails, nodeToRead, cont, resultsEvents);
+                            var statusCode = app.HandleHistoryEventReadRequest(config.Session, readEventDetails, nodeToRead, cont, resultsEvents);
 
                             int availableSpace = availableSpacePerRequest;
 

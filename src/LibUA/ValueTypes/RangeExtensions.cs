@@ -1,47 +1,48 @@
 ﻿using LibUA.Core;
 
-namespace LibUA.ValueTypes;
-
-public static class RangeExtensions
+namespace LibUA.ValueTypes
 {
-    public static int CodingSize(this MemoryBuffer mem, OpcRange dv)
+    public static class RangeExtensions
     {
-        int sum = 0;
-
-        sum += Coding.CodingSize(dv.Low);
-        sum += Coding.CodingSize(dv.High);
-
-        return sum;
-    }
-
-    public static bool Encode(this MemoryBuffer mem, OpcRange item)
-    {
-        if (!mem.Encode(item.Low)) { return false; }
-        if (!mem.Encode(item.High)) { return false; }
-
-        return true;
-    }
-
-    public static bool Decode(this MemoryBuffer mem, out OpcRange wv)
-    {
-        wv = null;
-
-        if (!mem.Decode(out double low)) { return false; }
-        if (!mem.Decode(out double high)) { return false; }
-
-        try
+        public static int CodingSize(this MemoryBuffer mem, OpcRange dv)
         {
-            wv = new OpcRange()
+            int sum = 0;
+
+            sum += Coding.CodingSize(dv.Low);
+            sum += Coding.CodingSize(dv.High);
+
+            return sum;
+        }
+
+        public static bool Encode(this MemoryBuffer mem, OpcRange item)
+        {
+            if (!mem.Encode(item.Low)) { return false; }
+            if (!mem.Encode(item.High)) { return false; }
+
+            return true;
+        }
+
+        public static bool Decode(this MemoryBuffer mem, out OpcRange wv)
+        {
+            wv = null;
+
+            if (!mem.Decode(out double low)) { return false; }
+            if (!mem.Decode(out double high)) { return false; }
+
+            try
             {
-                High = high,
-                Low = low
-            };
-        }
-        catch
-        {
-            return false;
-        }
+                wv = new OpcRange()
+                {
+                    High = high,
+                    Low = low
+                };
+            }
+            catch
+            {
+                return false;
+            }
 
-        return true;
+            return true;
+        }
     }
 }

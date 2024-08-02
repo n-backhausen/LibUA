@@ -144,7 +144,7 @@ namespace LibUA
 
             private void ThreadTarget()
             {
-                var sessionInfo = new Application.SessionCreationInfo()
+                var sessionInfo = new SessionCreationInfo()
                 {
                     Endpoint = socket.RemoteEndPoint
                 };
