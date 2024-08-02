@@ -2,9 +2,8 @@
 {
     namespace Core
     {
-        public class UserIdentityUsernameToken
+        public class UserIdentityUsernameToken : UserIdentityToken
         {
-            public string PolicyId { get; protected set; }
             public string Username { get; protected set; }
             public byte[] PasswordHash { get; protected set; }
             public string Algorithm { get; protected set; }
